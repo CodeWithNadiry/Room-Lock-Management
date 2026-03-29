@@ -50,13 +50,13 @@ async function userAction(
     }
 
     if (isEdit) {
-      await axios.patch(`https://room-lock-management-8vz7.vercel.app//users/${userId}`, payload, {
+      await axios.patch(`https://room-lock-management-8vz7.vercel.app/users/${userId}`, payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
     } else {
-      await axios.post("https://room-lock-management-8vz7.vercel.app//users", payload, {
+      await axios.post("https://room-lock-management-8vz7.vercel.app/users", payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

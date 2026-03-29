@@ -19,7 +19,7 @@ async function loginAction(prevState, formData, login, navigate) {
 
   try {
     const res = await axios.post(
-      "https://room-lock-management-8vz7.vercel.app//auth/login",
+      "https://room-lock-management-8vz7.vercel.app/auth/login",
       { email, password }
     );
 
