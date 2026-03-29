@@ -17,39 +17,28 @@ import { connectDB } from "./config/connectDB.js";
 
 const app = express();
 
-// ✅ Middleware
+// Middleware
 app.use(express.json());
-
 app.use(
   cors({
-    origin: true,
+    origin: ["https://room-lock-management.vercel.app/", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
 
-// ✅ Handle preflight safely (FIXES YOUR 500 ERROR)
-app.use((req, res, next) => {
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-  next();
-});
-
-// ✅ Routes
+// Routes
 app.use("/", dashboardRoutes);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/properties", propertyRoutes);
 app.use("/rooms", roomRoutes);
 app.use("/locks", lockRoutes);
-app.use("/room-lock", roomLockRoutes);
+app.use("/room-lock", roomLockRoutes); // NEW
 
-// ✅ Global error handler
+// Global error handler
 app.use((error, req, res, next) => {
-  console.error("ERROR:", error);
-
   const status = error.statusCode || 500;
   const message = error.message || "Something went wrong";
   const data = error.data || null;
@@ -57,36 +46,18 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message, data });
 });
 
-// ✅ Initialize DB + SuperAdmin ONCE (safe for serverless)
-let isInitialized = false;
+const PORT = process.env.PORT || 5000;
 
-async function init() {
-  if (isInitialized) return;
-
+const startServer = async () => {
   try {
     await connectDB();
-
-    try {
-      await createSuperAdmin();
-    } catch (err) {
-      console.error("SuperAdmin error:", err.message);
-    }
-
-    isInitialized = true;
-    console.log("✅ App initialized");
+    await createSuperAdmin();    
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
   } catch (err) {
-    console.error("❌ Init failed:", err);
+    console.error("Failed to start server:", err);
   }
-}
+};
 
-// ✅ Run init on every request (safe pattern for Vercel)
-app.use(async (req, res, next) => {
-  await init();
-  next();
-});
-
-// ❌ REMOVE app.listen (VERY IMPORTANT)
-// ❌ DO NOT use startServer()
-
-// ✅ Export app for Vercel
-export default app;
+startServer();
