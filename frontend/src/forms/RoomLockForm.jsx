@@ -54,7 +54,7 @@ const RoomLockForm = ({ data }) => {
       };
 
       await axios.post(
-        "https://room-lock-management.vercel.app/room-lock/assign",
+        "https://room-lock-management-eqw4.vercel.app/room-lock/assign",
         payload,
         { headers: { Authorization: `Bearer ${token}` } }
       );

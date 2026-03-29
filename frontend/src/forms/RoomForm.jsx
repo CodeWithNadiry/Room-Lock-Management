@@ -44,11 +44,11 @@ const RoomForm = ({ data }) => {
       };
 
       if (isEdit) {
-        await axios.patch(`https://room-lock-management.vercel.app/rooms/${data.id}`, payload, {
+        await axios.patch(`https://room-lock-management-eqw4.vercel.app/rooms/${data.id}`, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } else {
-        await axios.post("https://room-lock-management.vercel.app/rooms", payload, {
+        await axios.post("https://room-lock-management-eqw4.vercel.app/rooms", payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }
