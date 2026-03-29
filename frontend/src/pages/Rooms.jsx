@@ -18,7 +18,7 @@ const Rooms = () => {
   // Fetch rooms
   const fetchRooms = async () => {
     if (!propertyId) return [];
-    const res = await axios.get("https://room-lock-management-eqw4.vercel.app/rooms", {
+    const res = await axios.get("https://room-lock-management.vercel.app/rooms", {
       headers: { Authorization: `Bearer ${token}` },
       params: { property_id: propertyId },
     });
@@ -34,7 +34,7 @@ const Rooms = () => {
   // Delete room mutation
   const deleteRoomMutation = useMutation({
     mutationFn: async (roomId) => {
-      await axios.delete(`https://room-lock-management-eqw4.vercel.app/rooms/${roomId}`, {
+      await axios.delete(`https://room-lock-management.vercel.app/rooms/${roomId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
     },

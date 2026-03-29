@@ -8,7 +8,7 @@ import Button from "../components/Button";
 import axios from "axios";
 
 const fetchProperties = async (token) => {
-  const response = await axios.get("https://room-lock-management-eqw4.vercel.app/properties", {
+  const response = await axios.get("https://room-lock-management.vercel.app/properties", {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data.properties;

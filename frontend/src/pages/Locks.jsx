@@ -14,7 +14,7 @@ const Locks = () => {
 
   // Fetch locks for the current property
   const fetchLocks = async () => {
-    const res = await axios.get("https://room-lock-management-eqw4.vercel.app/locks", {
+    const res = await axios.get("https://room-lock-management.vercel.app/locks", {
       headers: { Authorization: `Bearer ${token}` },
       params: { property_id: activeProperty?.id },
     });
@@ -30,7 +30,7 @@ const Locks = () => {
   // Delete lock
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
-      await axios.delete(`https://room-lock-management-eqw4.vercel.app/locks/${id}`, {
+      await axios.delete(`https://room-lock-management.vercel.app/locks/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
     },
