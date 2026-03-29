@@ -28,6 +28,8 @@ app.use(
   })
 );
 
+// This line ensures OPTIONS preflight requests are handled
+app.options("*", cors());
 // Routes
 app.use("/", dashboardRoutes);
 app.use("/auth", authRoutes);
