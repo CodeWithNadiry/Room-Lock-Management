@@ -36,11 +36,11 @@ const PropertyForm = ({ data }) => {
       const payload = { name };
 
       if (isEdit) {
-        await axios.patch(`https://room-lock-management-8vz7.vercel.app/properties/${data.id}`, payload, {
+        await axios.patch(`http://localhost:5000/properties/${data.id}`, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } else {
-        await axios.post("https://room-lock-management-8vz7.vercel.app/properties", payload, {
+        await axios.post("http://localhost:5000/properties", payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }

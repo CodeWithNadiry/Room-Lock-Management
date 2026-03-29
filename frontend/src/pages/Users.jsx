@@ -21,7 +21,7 @@ const Users = () => {
   // Fetch users for the active property
   const fetchUsers = async () => {
     const res = await axios.get(
-      "https://room-lock-management-8vz7.vercel.app/users",
+      "http://localhost:5000/users",
       {
         headers: { Authorization: `Bearer ${token}` },
         params: { property_id: propertyId },
@@ -40,7 +40,7 @@ const Users = () => {
   const deleteUserMutation = useMutation({
     mutationFn: async (userId) => {
       await axios.delete(
-        `https://room-lock-management-8vz7.vercel.app/users/${userId}`,
+        `http://localhost:5000/users/${userId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

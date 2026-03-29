@@ -6,7 +6,7 @@ import useModalStore from "../store/ModalStore";
 import useAuthStore from "../store/AuthStore";
 
 async function fetchProperties(token) {
-  const response = await axios.get("https://room-lock-management-8vz7.vercel.app/properties", {
+  const response = await axios.get("http://localhost:5000/properties", {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data.properties;
@@ -25,7 +25,7 @@ const Properties = () => {
 
   const deletePropertyMutation = useMutation({
     mutationFn: async (propertyId) => {
-      await axios.delete(`https://room-lock-management-8vz7.vercel.app/properties/${propertyId}`, {
+      await axios.delete(`http://localhost:5000/properties/${propertyId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
     },

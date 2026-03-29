@@ -48,13 +48,13 @@ const LockForm = ({ data }) => {
 
       if (isEdit) {
         await axios.patch(
-          `https://room-lock-management-8vz7.vercel.app/locks/${data.id}`,
+          `http://localhost:5000/locks/${data.id}`,
           payload,
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else {
         await axios.post(
-          "https://room-lock-management-8vz7.vercel.app/locks",
+          "http://localhost:5000/locks",
           payload,
           { headers: { Authorization: `Bearer ${token}` } }
         );
