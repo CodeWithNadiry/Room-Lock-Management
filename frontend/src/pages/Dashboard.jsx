@@ -17,7 +17,7 @@ function Dashboard() {
   const fetchStats = async () => {
     if (!propertyId) return {};
 
-    const res = await axios.get("https://room-lock-management-eqw4.vercel.app/dashboard-stats", {
+    const res = await axios.get("https://room-lock-management-8vz7.vercel.app//dashboard-stats", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

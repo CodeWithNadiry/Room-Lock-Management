@@ -13,7 +13,7 @@ const Connections = () => {
   const { data: connections, isLoading, error } = useQuery({
     queryKey: ["roomLocks"],
     queryFn: async () => {
-      const res = await axios.get("https://room-lock-management-eqw4.vercel.app/room-lock", {
+      const res = await axios.get("https://room-lock-management-8vz7.vercel.app//room-lock", {
         headers: { Authorization: `Bearer ${token}` },
       });
       return res.data;
@@ -23,7 +23,7 @@ const Connections = () => {
   const handleUnassign = async (lockId) => {
     try {
       await axios.post(
-        "https://room-lock-management-eqw4.vercel.app/room-lock/unassign",
+        "https://room-lock-management-8vz7.vercel.app//room-lock/unassign",
         { lock_id: lockId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
