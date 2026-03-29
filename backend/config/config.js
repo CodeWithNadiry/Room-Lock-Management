@@ -1,9 +1,11 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+const db_url = process.env.DB_URL || 'postgresql://postgres.zefqjjawrlpksvoluiuf:nadiry_root@aws-1-ap-south-1.pooler.supabase.com:6543/postgres'
+
 export default {
   development: {
-    url: process.env.DB_URL,
+    url: db_url,
     dialect: "postgres",
     dialectOptions: {
       ssl: {
@@ -13,7 +15,7 @@ export default {
     },
   },
   production: {
-    url: process.env.DB_URL,
+    url: db_url,
     dialect: "postgres",
     dialectOptions: {
       ssl: {
